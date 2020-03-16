@@ -33,5 +33,14 @@
 	</bean>
 
 	<bean id="sendRankingJob" class="de.hybris.platform.cuppytrail.jobs.SendRankingJob" autowire="byName"/>
+	<!-- new custom Event -->
+	<bean id="stadiumCapacityInterceptor" class="de.hybris.platform.cuppytrail.interceptors.StadiumCapacityInterceptor"/>
+
+	<bean id="StadiumInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+		<property name="interceptor" ref="stadiumCapacityInterceptor" />
+		<property name="typeCode" value="Stadium" />
+	</bean>
+	<!-- Listener -->
+	<bean id="stadiumListener" class="de.hybris.platform.cuppytrail.events.StadiumEventListener" autowire="byName" />
 
 </beans>
